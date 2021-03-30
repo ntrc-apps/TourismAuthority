@@ -91,7 +91,8 @@ class HomeFragment : Fragment(), OnMapReadyCallback, MapboxMap.OnMarkerClickList
                 site_name.text = site.name
                 description.text = site.description
 
-                Picasso.with(context).load(site.image).placeholder(R.drawable.ic_launcher_foreground).into(siteImage)
+                //Picasso.with(context).load(site.image).placeholder(R.drawable.ic_launcher_foreground).into(siteImage)
+
             }
         }
 

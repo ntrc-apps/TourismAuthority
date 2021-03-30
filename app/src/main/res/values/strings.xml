@@ -20,6 +20,7 @@
     <string name="menu_taxi">Taxi Section</string>
     <string name="menu_tours">Tour Guide Section</string>
 
-
+    <string name="local_name">Name</string>
+    <string name="location_description">Description</string>
 
 </resources>

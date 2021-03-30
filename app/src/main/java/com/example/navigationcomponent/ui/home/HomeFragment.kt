@@ -18,5 +18,6 @@ class HomeFragment : Fragment() {
         val textView = root.findViewById<TextView?>(R.id.text_home)
         homeViewModel!!.getText()?.observe(viewLifecycleOwner, { s -> textView.text = s })
         return root
+
     }
 }

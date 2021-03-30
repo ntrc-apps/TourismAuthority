@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:backgroundTint="#FFFFFF"
+    android:orientation="vertical">
+
+
+    <ImageView
+        android:id="@+id/_image"
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/fantasea_tours" />
+
+
+    <LinearLayout
+        android:id="@+id/contactInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="231dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/montserrat"
+            android:text="The National Telecommunications Regulatory Commission (NTRC) of Saint Vincent and the Grenadines has been established to coordinate an effective telecommunications regulatory regime which will enhance the operation of telecommunications in the interest of the sustainable development of Saint Vincent and the Grenadines."
+            android:textColor="#000000"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/tandC"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/montserrat"
+            android:text="Terms of Use"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lineseven"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="340dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="4dp"
+            android:background="#C61E8AE8" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/privacy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="35dp"
+            android:fontFamily="@font/montserrat"
+            android:text="Version   1.00.05"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lineeight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="340dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="4dp"
+            android:background="#C61E8AE8" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/aboutUs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="129dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="80dp"
+            android:background="@drawable/circle"
+            android:text="Rate App"
+            android:textAllCaps="false"
+            android:textColor="#1E8AE8"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/feedBack"
+            android:layout_width="129dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="80dp"
+            android:background="@drawable/circle"
+            android:text="Feedback"
+            android:textAllCaps="false"
+            android:textColor="#1E8AE8"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

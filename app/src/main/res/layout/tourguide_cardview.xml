@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="373dp"
+        android:layout_height="167dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="10dp"
+        android:elevation="30dp"
+        android:orientation="vertical"
+        app:cardCornerRadius="10dp">
+
+
+        <ImageView
+            android:id="@+id/tourguide_image"
+            android:layout_width="383dp"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/fantasea_tours" />
+
+        <TextView
+            android:id="@+id/tourguide_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginEnd="16dp"
+            android:text="TextView"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="42dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="340dp"
+            android:layout_marginTop="10dp"
+            android:elevation="10dp"
+            android:button="@drawable/like_animation"
+            android:checked="false" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="match_parent"
+            android:layout_height="43dp"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/black_gradient" />
+
+
+    </androidx.cardview.widget.CardView>
+
+
+    <TextView
+        android:id="@+id/tourguide_desc"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="TextView"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+</LinearLayout>

@@ -11,8 +11,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import com.example.navigationcomponent.Map
 import com.example.navigationcomponent.R
 import com.example.navigationcomponent.custom_classes.TourismSite
+import com.mapbox.api.directions.v5.models.DirectionsResponse
 import com.mapbox.geojson.Point
 import com.mapbox.mapboxsdk.Mapbox
 import com.mapbox.mapboxsdk.annotations.Marker
@@ -23,10 +25,15 @@ import com.mapbox.mapboxsdk.maps.MapView
 import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback
 import com.mapbox.mapboxsdk.maps.Style
+import com.mapbox.services.android.navigation.ui.v5.route.NavigationMapRoute
+import com.mapbox.services.android.navigation.v5.navigation.NavigationRoute
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.json.JSONArray
 import org.json.JSONException
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.io.BufferedInputStream
 import java.io.BufferedReader
 import java.io.InputStream
@@ -79,7 +86,11 @@ class HomeFragment : Fragment(), OnMapReadyCallback, MapboxMap.OnMarkerClickList
     private fun displaySiteInfo(title: String){
         frameLayout.visibility = View.GONE
         siteInfo.visibility = View.VISIBLE
-
+        var destinationPoint = Point.fromLngLat(0.0, 0.0)
+        val originPoint = Point.fromLngLat(
+                locationComponent!!.lastKnownLocation!!.longitude,
+                locationComponent!!.lastKnownLocation!!.latitude
+        )
 
         close_info.setOnClickListener {
             frameLayout.visibility = View.VISIBLE
@@ -90,13 +101,14 @@ class HomeFragment : Fragment(), OnMapReadyCallback, MapboxMap.OnMarkerClickList
             if (title == site.name){
                 site_name.text = site.name
                 description.text = site.description
-
+                destinationPoint = Point.fromLngLat(site.latitude, site.longitude)
                 //Picasso.with(context).load(site.image).placeholder(R.drawable.ic_launcher_foreground).into(siteImage)
 
             }
         }
 
         directions.setOnClickListener {
+            getRoute(originPoint, destinationPoint)
             /*checkLocationEnginePermission()
             if (locationComponent.getLastKnownLocation() != null) {
                 val origin = Point.fromLngLat(
@@ -264,5 +276,50 @@ class HomeFragment : Fragment(), OnMapReadyCallback, MapboxMap.OnMarkerClickList
         displaySiteInfo(marker.snippet)
 
         return false
+    }
+
+    private fun getRoute(origin: Point, destination: Point) {
+        NavigationRoute.builder(this)
+                .accessToken(Mapbox.getAccessToken()!!)
+                .origin(origin)
+                .destination(destination)
+                .build()
+                .getRoute(object : Callback<DirectionsResponse?> {
+                    override fun onResponse(
+                            call: Call<DirectionsResponse?>,
+                            response: Response<DirectionsResponse?>
+                    ) {
+                        // You can get the generic HTTP info about the response
+                        Log.d(Map.Companion.TAG, "Response code: " + response.code())
+                        if (response.body() == null) {
+                            Log.e(
+                                    Map.Companion.TAG,
+                                    "No routes found, make sure you set the right user and access token."
+                            )
+                            return
+                        } else if (response.body()!!.routes().size < 1) {
+                            Log.e(Map.Companion.TAG, "No routes found")
+                            return
+                        }
+                        currentRoute = response.body()!!.routes()[0]
+
+                        // Draw the route on the map
+                        if (navigationMapRoute != null) {
+                            navigationMapRoute!!.removeRoute()
+                        } else {
+                            navigationMapRoute = NavigationMapRoute(
+                                    null,
+                                    mapView,
+                                    mapboxMap,
+                                    R.style.NavigationMapRoute
+                            )
+                        }
+                        navigationMapRoute!!.addRoute(currentRoute)
+                    }
+
+                    override fun onFailure(call: Call<DirectionsResponse?>, throwable: Throwable) {
+                        Log.e(Map.Companion.TAG, "Error: " + throwable.message)
+                    }
+                })
     }
 }

@@ -66,6 +66,7 @@
                         android:layout_gravity="center_horizontal"
                         android:layout_weight="1"
                         android:drawableTop="@drawable/ic_directions_black_36dp"
+                        android:fontFamily="@font/montserrat"
                         android:gravity="center_horizontal"
                         android:padding="5dp"
                         android:text="Directions" />
@@ -78,6 +79,7 @@
                         android:layout_gravity="center_horizontal"
                         android:layout_weight="1"
                         android:drawableTop="@drawable/share"
+                        android:fontFamily="@font/montserrat"
                         android:gravity="center_horizontal"
                         android:padding="5dp"
                         android:text="Share" />
@@ -94,14 +96,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    android:fontFamily="@font/montserrat"
                     android:text="@string/local_name"
-                    android:textSize="18sp"/>
+                    android:textSize="24sp" />
 
                 <TextView
                     android:id="@+id/description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
+                    android:fontFamily="@font/montserrat"
                     android:text="@string/location_description" />
             </LinearLayout>
         </ScrollView>

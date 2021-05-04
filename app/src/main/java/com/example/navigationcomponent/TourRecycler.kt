@@ -24,7 +24,7 @@ class TourRecycler : AppCompatActivity() {
                 ),
                 TourDetails(
                         R.drawable.hazecotours,
-                        "Hazeco Tours","Have fun"
+                        "Hazeco Tours","HazECO Tours is a company that operates in harmony with the natural environment, while providing personalised, quality Eco tours in St. Vincent and the Grenadines."
 
                 ),
                 TourDetails(

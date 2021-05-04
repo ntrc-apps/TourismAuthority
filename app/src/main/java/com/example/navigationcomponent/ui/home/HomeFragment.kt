@@ -1,8 +1,8 @@
 package com.example.navigationcomponent.ui.home
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
-import android.icu.number.NumberFormatter.with
 import android.os.AsyncTask
 import android.os.Bundle
 import android.os.Handler
@@ -11,13 +11,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import com.bumptech.glide.Glide.with
-import com.bumptech.glide.load.resource.bitmap.BitmapTransitionOptions.with
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.with
+import com.example.navigationcomponent.AboutUs
 import com.example.navigationcomponent.R
 import com.example.navigationcomponent.custom_classes.TourismSite
 import com.mapbox.android.core.permissions.PermissionsListener
@@ -40,6 +40,7 @@ import com.mapbox.services.android.navigation.ui.v5.NavigationLauncherOptions
 import com.mapbox.services.android.navigation.ui.v5.route.NavigationMapRoute
 import com.mapbox.services.android.navigation.v5.navigation.NavigationRoute
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.json.JSONArray
 import org.json.JSONException
@@ -97,7 +98,10 @@ class HomeFragment : Fragment(), OnMapReadyCallback, MapboxMap.OnMarkerClickList
         super.onCreate(savedInstanceState)
 
         activity?.let { Mapbox.getInstance(it, getString(R.string.access_token)) }
+
     }
+
+
 
     private fun displaySiteInfo(title: String){
         frameLayout.visibility = View.GONE
@@ -108,18 +112,13 @@ class HomeFragment : Fragment(), OnMapReadyCallback, MapboxMap.OnMarkerClickList
                 locationComponent!!.lastKnownLocation!!.latitude
         )
 
-        close_info.setOnClickListener {
-            frameLayout.visibility = View.VISIBLE
-            siteInfo.visibility = View.GONE
-        }
-
         for (site in siteList){
             if (title == site.name){
                 site_name.text = site.name
                 description.text = site.description
                 destinationPoint = Point.fromLngLat(site.longitude, site.latitude)
 
-                Picasso.get().load(site.image).placeholder(R.drawable.cruise).into(siteImage);
+                Picasso.get().load(site.image).placeholder(R.drawable.ic_launcher_foreground).into(siteImage)
 
             }
         }
@@ -260,6 +259,7 @@ class HomeFragment : Fragment(), OnMapReadyCallback, MapboxMap.OnMarkerClickList
             }
         }
     }
+
 
     private fun displayMarkers(){
         //val markerManager = MarkerViewManager(mMapView, mMapboxMap)
@@ -415,4 +415,5 @@ class HomeFragment : Fragment(), OnMapReadyCallback, MapboxMap.OnMarkerClickList
                     }
                 })
     }
+
 }

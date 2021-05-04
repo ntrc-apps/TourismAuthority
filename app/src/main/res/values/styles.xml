@@ -1,8 +1,8 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
+    <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -21,6 +21,8 @@
         <item name="colorControlActivated">#FFE609</item>
     </style>
 
+
+
     <style name="NavigationMapRoute">
         <!-- Colors -->
         <item name="routeColor">@color/mapboxBlue</item>
@@ -36,5 +38,6 @@
         <item name="navigationViewSecondary">@color/mapboxBlue</item>
         <item name="navigationViewAccent">@color/mapboxPink</item>
     </style>
+
 
 </resources>

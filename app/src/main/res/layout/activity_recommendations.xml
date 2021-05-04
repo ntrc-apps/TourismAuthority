@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:text=" Recommended Activities"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="20sp" />
+
+
+
+    <LinearLayout
+        android:id="@+id/aquatic"
+        android:layout_width="match_parent"
+        android:layout_marginTop="25dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginLeft="40dp"
+            app:srcCompat="@drawable/ic_baseline_beach_access_24"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/montserrat"
+            android:text="Aquatic"
+            android:textColor="#000000"
+            android:textSize="18sp" />
+
+
+    </LinearLayout>
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="340dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="4dp"
+            android:background="#11000000"  />
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:orientation="horizontal"/>
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"/>
+
+    <LinearLayout
+        android:id="@+id/culture"
+        android:layout_width="match_parent"
+        android:layout_marginTop="4dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginLeft="40dp"
+            app:srcCompat="@drawable/ic_baseline_public_24" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="4dp"
+            android:autoLink="phone"
+            android:fontFamily="@font/montserrat"
+            android:linksClickable="true"
+            android:text="Culture"
+            android:textColor="#000000"
+            android:textSize="18sp" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="340dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="4dp"
+            android:background="#11000000"  />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/hikes"
+        android:layout_width="match_parent"
+        android:layout_marginTop="4dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginLeft="40dp"
+            app:srcCompat="@drawable/ic_baseline_grass_24" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="4dp"
+            android:autoLink="phone"
+            android:fontFamily="@font/montserrat"
+            android:linksClickable="true"
+            android:text="Hikes"
+            android:textColor="#000000"
+            android:textSize="18sp" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="340dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="4dp"
+            android:background="#11000000"  />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/leisure"
+        android:layout_width="match_parent"
+        android:layout_marginTop="4dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginLeft="40dp"
+            app:srcCompat="@drawable/ic_baseline_insert_emoticon_24"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/montserrat"
+            android:text="Leisure"
+            android:textColor="#000000"
+            android:textSize="18sp" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="340dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="4dp"
+            android:background="#11000000"  />
+    </LinearLayout>
+
+
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Modes of Transport"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="15dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginLeft="40dp"
+            app:srcCompat="@drawable/ic_baseline_directions_boat_24"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/montserrat"
+            android:text="Sea"
+            android:textColor="#000000"
+            android:textSize="18sp" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="340dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="4dp"
+            android:background="#11000000"  />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="4dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginLeft="40dp"
+            app:srcCompat="@drawable/ic_baseline_airplanemode_active_24"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/montserrat"
+            android:text="Air"
+            android:textColor="#000000"
+            android:textSize="18sp" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="340dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="4dp"
+            android:background="#11000000"  />
+    </LinearLayout>
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_marginTop="4dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginLeft="40dp"
+            app:srcCompat="@drawable/ic_baseline_directions_car_filled_24"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/montserrat"
+            android:text="Land"
+            android:textColor="#000000"
+            android:textSize="18sp" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="340dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="4dp"
+            android:background="#11000000"  />
+    </LinearLayout>
+
+</LinearLayout>

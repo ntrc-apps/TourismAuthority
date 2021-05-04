@@ -15,28 +15,55 @@
         android:layout_width="match_parent"
         android:layout_height="190dp"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/fantasea_tours" />
+        app:srcCompat="@drawable/natureone" />
 
 
-    <LinearLayout
-        android:id="@+id/contactInfo"
+    <TextView
+        android:id="@+id/mission_statement2"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="2dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Mission Statement"
+        android:textColor="#070707"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:fontFamily="@font/montserrat"
+        android:layout_marginStart="5dp"
+        android:text="To advance the positioning of St. Vincent and the Grenadines as a diverse, globally competitive tourism destination through effective planning, development, management, marketing and sustainable use of the natural resources and heritage sites and attractions of the country."
+        android:textColor="#070707"
+        android:textSize="18sp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="231dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/montserrat"
-            android:text="The National Telecommunications Regulatory Commission (NTRC) of Saint Vincent and the Grenadines has been established to coordinate an effective telecommunications regulatory regime which will enhance the operation of telecommunications in the interest of the sustainable development of Saint Vincent and the Grenadines."
-            android:textColor="#000000"
-            android:textSize="18sp" />
-    </LinearLayout>
+    <TextView
+        android:id="@+id/mission_statement"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginStart="5dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Vision Statement"
+        android:textColor="#070707"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:layout_marginStart="5dp"
+        android:text="To establish St. Vincent and the Grenadines as the authentic Caribbean destination where development is in harmony with the preservation of social values, the natural environment and the attainment of economic goals."
+        android:textColor="#070707"
+        android:textSize="18sp" />
 
     <LinearLayout
-        android:id="@+id/lineseven"
+        android:id="@+id/line"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -46,8 +73,9 @@
             android:layout_width="340dp"
             android:layout_height="1dp"
             android:layout_marginStart="35dp"
-            android:layout_marginTop="4dp"
-            android:background="#C61E8AE8" />
+            android:layout_marginTop="10dp"
+            android:background="#C61E8AE8"
+            android:textColor="#1E8AE8" />
     </LinearLayout>
 
     <LinearLayout
@@ -64,7 +92,7 @@
             android:fontFamily="@font/montserrat"
             android:text="Version   1.00.05"
             android:textColor="#000000"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
 
 
     </LinearLayout>
@@ -81,7 +109,8 @@
             android:layout_height="1dp"
             android:layout_marginStart="35dp"
             android:layout_marginTop="4dp"
-            android:background="#C61E8AE8" />
+            android:background="#C61E8AE8"
+            android:textColor="#1E8AE8" />
     </LinearLayout>
 
     <LinearLayout
@@ -105,22 +134,10 @@
             android:layout_width="129dp"
             android:layout_height="wrap_content"
             android:onClick="rateMe"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="80dp"
+            android:layout_marginStart="140dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/circle"
             android:text="Rate App"
-            android:textAllCaps="false"
-            android:textColor="#1E8AE8"
-            android:textSize="18sp" />
-
-        <Button
-            android:id="@+id/feedBack"
-            android:layout_width="129dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="60dp"
-            android:layout_marginTop="80dp"
-            android:background="@drawable/circle"
-            android:text="Feedback"
             android:textAllCaps="false"
             android:textColor="#1E8AE8"
             android:textSize="18sp" />

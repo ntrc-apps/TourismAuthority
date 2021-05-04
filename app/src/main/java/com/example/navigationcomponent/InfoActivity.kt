@@ -52,6 +52,8 @@ val button1 = findViewById<Button>(R.id.button_review)
         dialIntent.data = Uri.parse("tel:" + "1-784-457-4477 ")
         startActivity(dialIntent)
     }
+
+
 }
 
 

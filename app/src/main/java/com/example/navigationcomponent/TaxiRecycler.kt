@@ -15,7 +15,7 @@ class TaxiRecycler : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main2)
+        setContentView(R.layout.activity_taxi_recycler)
 
         val imageList = listOf<TourDetails>(
                 TourDetails(
@@ -39,6 +39,7 @@ class TaxiRecycler : AppCompatActivity() {
                 TourDetails(
                         R.drawable.fantasea_tours,
                         "Volcano Trips","Have fun"
+
                 )
         )
 

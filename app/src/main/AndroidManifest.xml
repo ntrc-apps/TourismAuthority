@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -12,11 +13,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PrivacyPolicy"></activity>
-        <activity android:name=".TermsConditions" />
+        <activity android:name=".ContactActivity"></activity>
+        <activity android:name=".Leisure" />
+        <activity android:name=".Hikes" />
+        <activity android:name=".Culture" />
+        <activity android:name=".Aquatic" />
+        <activity android:name=".Recommendations" />
+        <activity android:name=".AppTheme" />
         <activity
             android:name=".SplashScreen"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,7 +30,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".Settings" />
-        <activity android:name=".Map" />
         <activity android:name=".Rating" />
         <activity android:name=".AboutUs" />
         <activity android:name=".InfoActivity" />

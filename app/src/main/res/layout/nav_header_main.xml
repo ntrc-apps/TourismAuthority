@@ -14,26 +14,26 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="73dp"
-        android:layout_height="69dp"
-        android:contentDescription="@string/nav_header_desc"
-        android:cropToPadding="false"
-        android:fadingEdge="horizontal|vertical"
-        android:scaleType="fitXY"
-        app:srcCompat="@drawable/tourism_circle" />
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="40dp"
+
         android:fontFamily="@font/montserrat"
         android:text="Discover SVG"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:text="svgta@discoversvg.com"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp" />
+
 
 
 </LinearLayout>

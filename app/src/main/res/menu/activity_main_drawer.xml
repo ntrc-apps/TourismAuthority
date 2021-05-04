@@ -23,5 +23,10 @@
             android:icon="@drawable/ic_baseline_settings_24"
             android:title="Settings" />
 
+        <item
+            android:id="@+id/nav_recommendation"
+            android:icon="@drawable/ic_baseline_star_24"
+            android:title="Recommendations" />
+
     </group>
 </menu>

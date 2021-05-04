@@ -40,7 +40,7 @@
         android:id="@+id/nav_activity"
         android:name="com.example.navigationcomponent.TaxiRecycler"
         android:label="@string/menu_activity"
-        tools:layout="@layout/activity_main2" />
+        tools:layout="@layout/activity_taxi_recycler" />
     <activity
         android:id="@+id/nav_tour_recycler"
         android:name="com.example.navigationcomponent.TourRecycler"
@@ -52,6 +52,12 @@
         android:name="com.example.navigationcomponent.Settings"
         android:label="Settings"
         tools:layout="@layout/activity_settings" />
+
+    <activity
+        android:id="@+id/nav_recommendation"
+        android:name="com.example.navigationcomponent.Recommendations"
+        android:label="Recommendations"
+        tools:layout="@layout/activity_recommendations" />
 
 
 </navigation>

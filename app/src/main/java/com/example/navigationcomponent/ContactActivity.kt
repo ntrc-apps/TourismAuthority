@@ -13,6 +13,12 @@ class ContactActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_contact)
 
+        email.setOnClickListener {
+            val intent = Intent(Intent.ACTION_SENDTO)
+            intent.data = Uri.parse("mailto: tourism@gov.vc")
+            startActivity(intent)
+
+        }
 
     }
 
@@ -21,12 +27,6 @@ class ContactActivity : AppCompatActivity() {
         dialIntent.data = Uri.parse("tel:" + "1-784 457-1502 ")
         startActivity(dialIntent)
 
-     email.setOnClickListener {
-         val intent = Intent(Intent.ACTION_SENDTO)
-         intent.data = Uri.parse("mailto: tourism@gov.vc")
-         startActivity(intent)
-
-     }
 }
 
 }

@@ -11,13 +11,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import com.example.navigationcomponent.AboutUs
 import com.example.navigationcomponent.R
 import com.example.navigationcomponent.custom_classes.TourismSite
 import com.mapbox.android.core.permissions.PermissionsListener
@@ -42,6 +40,7 @@ import com.mapbox.services.android.navigation.v5.navigation.NavigationRoute
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_home.view.*
 import org.json.JSONArray
 import org.json.JSONException
 import retrofit2.Call
@@ -59,6 +58,7 @@ class HomeFragment : Fragment(), OnMapReadyCallback, MapboxMap.OnMarkerClickList
     private lateinit var mMapView: MapView
     private lateinit var mMapboxMap: MapboxMap
     private lateinit var homeViewModel: HomeViewModel
+
 
     var defaultDirections: String? = null
     var defaultDirectionsOn = false
@@ -102,7 +102,6 @@ class HomeFragment : Fragment(), OnMapReadyCallback, MapboxMap.OnMarkerClickList
     }
 
 
-
     private fun displaySiteInfo(title: String){
         frameLayout.visibility = View.GONE
         siteInfo.visibility = View.VISIBLE
@@ -118,10 +117,27 @@ class HomeFragment : Fragment(), OnMapReadyCallback, MapboxMap.OnMarkerClickList
                 description.text = site.description
                 destinationPoint = Point.fromLngLat(site.longitude, site.latitude)
 
-                Picasso.get().load(site.image).placeholder(R.drawable.ic_launcher_foreground).into(siteImage)
+
+                Picasso.get().load(site.image).placeholder(R.drawable.ic_launcher_foreground).into(site_image)
+               
 
             }
         }
+
+
+        fun shareLocation() {
+
+            val info = "https://www.ntrc.vc/tourism-app/?locname="  + "&locdesc="
+            val shareIntent = Intent()
+            shareIntent.action = Intent.ACTION_SEND
+            shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Location Shared")
+            shareIntent.putExtra(Intent.EXTRA_TEXT, info.replace(" ".toRegex(), "%20"))
+            shareIntent.type = "text/plain"
+            startActivity(shareIntent)
+
+        }
+        share.setOnClickListener  { shareLocation() }
+        Log.e("shareImage", "Clicked")
 
         directions.setOnClickListener {
             Log.e("Directions", "Clicked")
@@ -224,7 +240,7 @@ class HomeFragment : Fragment(), OnMapReadyCallback, MapboxMap.OnMarkerClickList
                     Log.e("Result", resultList)
                     try {
                         val jArray = JSONArray(resultList)
-                        for (i in 0 until jArray.length()) {
+                        for (i in 0..jArray.length() - 1) {
                             val siteInfo = jArray.getJSONObject(i)
 
                             val site = TourismSite()

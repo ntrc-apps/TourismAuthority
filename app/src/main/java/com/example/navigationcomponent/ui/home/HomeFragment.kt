@@ -11,11 +11,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import com.bumptech.glide.Glide
 import com.example.navigationcomponent.R
 import com.example.navigationcomponent.custom_classes.TourismSite
 import com.mapbox.android.core.permissions.PermissionsListener
@@ -38,9 +39,7 @@ import com.mapbox.services.android.navigation.ui.v5.NavigationLauncherOptions
 import com.mapbox.services.android.navigation.ui.v5.route.NavigationMapRoute
 import com.mapbox.services.android.navigation.v5.navigation.NavigationRoute
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.fragment_home.view.*
 import org.json.JSONArray
 import org.json.JSONException
 import retrofit2.Call
@@ -58,6 +57,9 @@ class HomeFragment : Fragment(), OnMapReadyCallback, MapboxMap.OnMarkerClickList
     private lateinit var mMapView: MapView
     private lateinit var mMapboxMap: MapboxMap
     private lateinit var homeViewModel: HomeViewModel
+
+    private var name: TextView? = null
+    private var desc: TextView? = null
 
 
     var defaultDirections: String? = null
@@ -111,23 +113,23 @@ class HomeFragment : Fragment(), OnMapReadyCallback, MapboxMap.OnMarkerClickList
                 locationComponent!!.lastKnownLocation!!.latitude
         )
 
-        for (site in siteList){
-            if (title == site.name){
+        for (site in siteList) {
+            if (title == site.name) {
                 site_name.text = site.name
                 description.text = site.description
                 destinationPoint = Point.fromLngLat(site.longitude, site.latitude)
 
-
                 Picasso.get().load(site.image).placeholder(R.drawable.ic_launcher_foreground).into(site_image)
-               
+
 
             }
         }
 
-
         fun shareLocation() {
+             site_name.toString()
+             description.toString()
 
-            val info = "https://www.ntrc.vc/tourism-app/?locname="  + "&locdesc="
+            val info = "https://www.ntrc.vc/tourism-app/?name=" + "&description="
             val shareIntent = Intent()
             shareIntent.action = Intent.ACTION_SEND
             shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Location Shared")
@@ -136,8 +138,8 @@ class HomeFragment : Fragment(), OnMapReadyCallback, MapboxMap.OnMarkerClickList
             startActivity(shareIntent)
 
         }
-        share.setOnClickListener  { shareLocation() }
-        Log.e("shareImage", "Clicked")
+        share.setOnClickListener { v: View? -> shareLocation() }
+
 
         directions.setOnClickListener {
             Log.e("Directions", "Clicked")

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context= "com.example.navigationcomponent.InfoActivity">
+    tools:context= "com.example.navigationcomponent.TourActivity">
 
 
     <ImageView
@@ -86,6 +86,7 @@
             app:srcCompat="@drawable/ic_baseline_location_on_24" />
 
         <TextView
+            android:id="@+id/tour_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
@@ -140,6 +141,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/tour_hours"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -189,7 +191,6 @@
             android:layout_height="40dp"
             android:layout_marginEnd="70dp"
             android:layout_weight="1"
-            android:onClick="Call"
             android:text="784 457-4477"
             android:textColor="#000000"
             android:textSize="16sp"

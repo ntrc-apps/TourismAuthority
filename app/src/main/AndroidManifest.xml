@@ -13,13 +13,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ContactActivity"></activity>
+        <activity android:name=".ContactActivity" />
         <activity android:name=".Leisure" />
         <activity android:name=".Hikes" />
         <activity android:name=".Culture" />
         <activity android:name=".Aquatic" />
         <activity android:name=".Recommendations" />
-        <activity android:name=".AppTheme" />
         <activity
             android:name=".SplashScreen"
             android:theme="@style/AppTheme.NoActionBar">
@@ -32,8 +31,8 @@
         <activity android:name=".Settings" />
         <activity android:name=".Rating" />
         <activity android:name=".AboutUs" />
-        <activity android:name=".InfoActivity" />
-        <activity android:name=".TourRecycler" />
+        <activity android:name=".TourActivity" />
+        <activity android:name=".TourRecyclerAdapter" />
         <activity android:name=".TaxiRecycler" />
         <activity
             android:name=".MainActivity"

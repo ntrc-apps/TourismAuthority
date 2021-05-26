@@ -1,12 +1,13 @@
 package com.example.navigationcomponent
 
 
-import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
-
-@Parcelize
-data class TourDetails(
-        val imageSrc : Int,
-        val imageTitle: String,
-        val imageDesc: String,
-) : Parcelable
+class TourDetails {
+    var tourName: String = ""
+    var tourDesc: String = ""
+    var tourLink: String = ""
+    var tourHours: String = ""
+    var tourPhone: String = ""
+    var tourLocation: String = ""
+    var tourId: Int = 0
+    var tourImage: String = ""
+}

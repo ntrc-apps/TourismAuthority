@@ -13,17 +13,17 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.tourguide_cardview.view.*
 
 
-class TourRecyclerAdapter  (private var toursList: ArrayList <TourDetails>, private val context: Activity): RecyclerView.Adapter<TourRecyclerAdapter.MyViewHolder>(){
+class TourRecyclerAdapter  (private var tourList: ArrayList <TourDetails>, private val context: Activity): RecyclerView.Adapter<TourRecyclerAdapter.MyViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.tourguide_cardview,
                 parent, false)
         return MyViewHolder(itemView)
     }
 
-    override fun getItemCount() = toursList.size
+    override fun getItemCount() = tourList.size
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val currentItem = toursList[position]
+        val currentItem = tourList[position]
 
 
         holder.tourName.text = currentItem.tourName
@@ -39,8 +39,8 @@ class TourRecyclerAdapter  (private var toursList: ArrayList <TourDetails>, priv
     }
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        val tourImage: ImageView = itemView.tourguide_image
-        val tourName: TextView = itemView.tourguide_name
+        val tourImage: ImageView = itemView.image
+        val tourName: TextView = itemView.tour_name
         val layout: LinearLayout = itemView.layout
     }
 }

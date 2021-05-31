@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="70dp"
             android:fontFamily="@font/montserrat"
-            android:text="Discover SVG"
+            android:text="@string/discover_svg"
             android:textColor="#FFFFFF"
             android:textSize="30sp"
             android:textStyle="bold" />
@@ -65,7 +65,7 @@
             android:elevation="30dp"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:text="Tour Guides" />
+            android:text="@string/tour_guides" />
 
         <TextView
             android:layout_width="200dp"
@@ -86,8 +86,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingBottom="5dp"
-            tools:listitem="@layout/tourguide_cardview"
-            tools:ignore="MissingClass" />
+            tools:listitem="@layout/tourguide_cardview" />
     </LinearLayout>
 
 </LinearLayout>

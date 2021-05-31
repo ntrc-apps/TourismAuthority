@@ -23,5 +23,7 @@
     <string name="local_name">Name</string>
     <string name="location_description">Description</string>
     <string name="siteimage">siteImage</string>
+    <string name="discover_svg">Discover SVG</string>
+    <string name="tour_guides">Tour Guides</string>
 
 </resources>

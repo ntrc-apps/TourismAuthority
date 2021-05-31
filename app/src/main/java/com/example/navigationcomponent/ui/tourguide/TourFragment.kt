@@ -30,7 +30,7 @@ import java.net.URL
 class TourFragment : Fragment() {
 
 
-    private lateinit var ShareViewModel: ShareViewModel
+    private lateinit var shareViewModel: ShareViewModel
     private var toursList: ArrayList<TourDetails> = ArrayList()
 
     // This fragment loads the images however it is not responsible for the opening of more shop information. That would be ShopActivity.
@@ -41,10 +41,10 @@ class TourFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        ShareViewModel =
+        shareViewModel =
                 ViewModelProviders.of(this).get(ShareViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_tour, container, false)
-        ShareViewModel.text.observe(viewLifecycleOwner, Observer {
+        shareViewModel.text.observe(viewLifecycleOwner, Observer {
         })
 
         return root
@@ -56,7 +56,7 @@ class TourFragment : Fragment() {
         AsyncTask.execute{
             val `is`: InputStream
             val link =
-                    URL("http://cert-manager.ntrcsvg.com/tourism/getTourguides.php")
+                    URL("http://ec2-54-237-130-84.compute-1.amazonaws.com/tourism/getTourguides.php")
             var conn = link.openConnection() as HttpURLConnection
             var resultList = ""
             try {

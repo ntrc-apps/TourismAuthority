@@ -21,6 +21,11 @@
         <item name="colorControlActivated">#FFE609</item>
     </style>
 
+    <style name="MyCustomToolBar" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:textColorPrimary">#3e3e3e</item>
+        <item name="android:textColorSecondary">#FFF</item>
+    </style>
+
 
 
     <style name="NavigationMapRoute">

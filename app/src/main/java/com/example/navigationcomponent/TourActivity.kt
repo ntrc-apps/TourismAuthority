@@ -83,10 +83,10 @@ class TourActivity : AppCompatActivity() {
                             for (i in 0 until jArray.length()) {
                                 val tourInfoAll: JSONObject = jArray.getJSONObject(i)
 
-                                _image.post {
+                                image.post {
                                     tour_name.text = tourInfoAll.getString("tourguide_name")
                                     tour_desc.text = tourInfoAll.getString("tourguide_desc")
-                                    Picasso.get().load(tourInfoAll.getString("tourimageurl")).placeholder(R.drawable.cruise).into(_image)
+                                    Picasso.get().load(tourInfoAll.getString("tourimageurl")).placeholder(R.drawable.cruise).into(image)
 
                                     // Displays Views once info is present
                                     if ( tourInfoAll.getString("tourguide_location").isEmpty()){

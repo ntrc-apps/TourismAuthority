@@ -18,7 +18,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="378dp"
-        android:layout_height="wrap_content"
+        android:layout_height="230dp"
         android:layout_gravity="center"
         android:layout_marginTop="-55dp"
         android:elevation="15dp"
@@ -40,10 +40,8 @@
             android:id="@+id/tour_desc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="7dp"
-            android:layout_marginEnd="5dp"
+            android:layout_marginStart="5dp"
             android:layout_marginTop="30dp"
-            android:layout_marginBottom="10dp"
             android:fontFamily="@font/montserrat"
             android:text="Hi"
             android:textColor="#000000"
@@ -74,17 +72,16 @@
 
     <LinearLayout
         android:id="@+id/location"
-        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="39dp"
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/locationIcon"
             android:layout_width="40dp"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:layout_marginStart="40dp"
-            android:layout_gravity="center"
+            android:layout_marginTop="9dp"
             app:srcCompat="@drawable/ic_baseline_location_on_24" />
 
         <TextView
@@ -92,6 +89,7 @@
             android:layout_width="308dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/montserrat"
             android:text="Lower Bay Street, Kingstown"
             android:textAlignment="viewStart"
@@ -119,25 +117,24 @@
     <LinearLayout
         android:id="@+id/workHours"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="39dp"
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/clockIcon"
             android:layout_width="40dp"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="3dp"
             android:layout_marginStart="40dp"
-            android:layout_gravity="center"
             app:srcCompat="@drawable/ic_baseline_access_time_24" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_gravity="center"
+            android:layout_marginTop="4dp"
             android:fontFamily="@font/montserrat"
             android:text="Open"
-            android:textColor="#34CD3A"
+            android:textColor="#88FF00"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -146,9 +143,10 @@
             android:layout_width="240dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_gravity="center"
+            android:layout_marginTop="4dp"
             android:fontFamily="@font/montserrat"
             android:text="24 hours daily"
+            android:textAlignment="viewStart"
             android:textColor="#000000"
             android:textSize="16sp"
             android:typeface="monospace" />
@@ -173,14 +171,14 @@
     <LinearLayout
         android:id="@+id/phoneNumber"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="39dp"
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/phoneIcon"
             android:layout_width="40dp"
             android:layout_height="30dp"
-            android:layout_gravity="center"
+            android:layout_marginTop="3dp"
             android:layout_marginStart="40dp"
             app:srcCompat="@drawable/ic_baseline_local_phone_24" />
 
@@ -223,22 +221,22 @@
     <LinearLayout
         android:id="@+id/websiteLink"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="39dp"
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/globeIcon"
             android:layout_width="40dp"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="3dp"
             android:layout_marginStart="40dp"
-            android:layout_gravity="center"
             app:srcCompat="@drawable/website" />
 
         <Button
             android:id="@+id/buttonWeb"
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:layout_width="300dp"
-            android:layout_height="wrap_content"
+            android:layout_height="38dp"
             android:layout_marginEnd="25dp"
             android:layout_weight="1"
             android:text="fantaseatours.com"
@@ -267,7 +265,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="350dp"
-        android:layout_height="80dp"
+        android:layout_height="111dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="10dp"
         android:background="#00BCD4"
@@ -309,5 +307,6 @@
         android:textSize="16sp"
         android:textStyle="bold" />
 
-</LinearLayout>
 
+
+</LinearLayout>

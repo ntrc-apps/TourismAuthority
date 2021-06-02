@@ -48,12 +48,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:searchIcon="@drawable/ic_baseline_search_24" />
-
-        <ListView
-            android:id="@+id/listView"
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            />
     </LinearLayout>
 
     <LinearLayout

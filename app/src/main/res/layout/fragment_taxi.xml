@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="70dp"
             android:fontFamily="@font/montserrat"
-            android:text="Discover SVG"
+            android:text="@string/discover_svg"
             android:textColor="#FFFFFF"
             android:textSize="30sp"
             android:textStyle="bold" />
@@ -48,12 +48,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:searchIcon="@drawable/ic_baseline_search_24" />
-
-        <ListView
-            android:id="@+id/listView"
-            android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            />
     </LinearLayout>
 
     <LinearLayout
@@ -71,7 +65,7 @@
             android:elevation="30dp"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:text="Tour Guides" />
+            android:text="Taxis" />
 
         <TextView
             android:layout_width="200dp"
@@ -88,9 +82,15 @@
         android:orientation="vertical">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/_imageRecyclerView"
+            android:id="@+id/taxi_recylerview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp"
+            tools:listitem="@layout/tourguide_cardview" />
     </LinearLayout>
 
 </LinearLayout>
+
+
+
+

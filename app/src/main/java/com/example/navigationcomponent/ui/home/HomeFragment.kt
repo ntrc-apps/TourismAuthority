@@ -11,12 +11,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import android.widget.EditText
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import com.bumptech.glide.Glide
+import com.example.navigationcomponent.AboutUs
 import com.example.navigationcomponent.R
 import com.example.navigationcomponent.custom_classes.TourismSite
 import com.mapbox.android.core.permissions.PermissionsListener
@@ -39,7 +39,10 @@ import com.mapbox.services.android.navigation.ui.v5.NavigationLauncherOptions
 import com.mapbox.services.android.navigation.ui.v5.route.NavigationMapRoute
 import com.mapbox.services.android.navigation.v5.navigation.NavigationRoute
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.*
+import kotlinx.android.synthetic.main.activity_settings.*
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_home.view.*
 import org.json.JSONArray
 import org.json.JSONException
 import retrofit2.Call
@@ -57,9 +60,6 @@ class HomeFragment : Fragment(), OnMapReadyCallback, MapboxMap.OnMarkerClickList
     private lateinit var mMapView: MapView
     private lateinit var mMapboxMap: MapboxMap
     private lateinit var homeViewModel: HomeViewModel
-
-    private var name: TextView? = null
-    private var desc: TextView? = null
 
 
     var defaultDirections: String? = null
@@ -84,6 +84,7 @@ class HomeFragment : Fragment(), OnMapReadyCallback, MapboxMap.OnMarkerClickList
                 ViewModelProviders.of(this).get(HomeViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_home, container, false)
 
+
         /*frameLayout.visibility = View.VISIBLE
         siteInfo.visibility = View.GONE*/
 
@@ -104,7 +105,9 @@ class HomeFragment : Fragment(), OnMapReadyCallback, MapboxMap.OnMarkerClickList
     }
 
 
+
     private fun displaySiteInfo(title: String){
+        var selectedSite = TourismSite()
         frameLayout.visibility = View.GONE
         siteInfo.visibility = View.VISIBLE
         var destinationPoint = Point.fromLngLat(0.0, 0.0)
@@ -113,23 +116,28 @@ class HomeFragment : Fragment(), OnMapReadyCallback, MapboxMap.OnMarkerClickList
                 locationComponent!!.lastKnownLocation!!.latitude
         )
 
-        for (site in siteList) {
-            if (title == site.name) {
+        /*close_info.setOnClickListener {
+            frameLayout.visibility = View.VISIBLE
+            siteInfo.visibility = View.GONE
+        }*/
+
+        for (site in siteList){
+            if (title == site.name){
+                selectedSite = site
                 site_name.text = site.name
                 description.text = site.description
                 destinationPoint = Point.fromLngLat(site.longitude, site.latitude)
+                Log.e("SiteImage", site.image)
 
                 Picasso.get().load(site.image).placeholder(R.drawable.ic_launcher_foreground).into(site_image)
-
 
             }
         }
 
-        fun shareLocation() {
-             site_name.toString()
-             description.toString()
 
-            val info = "https://www.ntrc.vc/tourism-app/?name=" + "&description="
+        fun shareLocation() {
+
+            val info = "https://www.ntrc.vc/tourism-app/?lat=" + selectedSite.latitude.toString() + "&lng" + selectedSite.longitude.toString()
             val shareIntent = Intent()
             shareIntent.action = Intent.ACTION_SEND
             shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Location Shared")
@@ -138,8 +146,8 @@ class HomeFragment : Fragment(), OnMapReadyCallback, MapboxMap.OnMarkerClickList
             startActivity(shareIntent)
 
         }
-        share.setOnClickListener { v: View? -> shareLocation() }
-
+        share.setOnClickListener  { shareLocation() }
+        Log.e("shareImage", "Clicked")
 
         directions.setOnClickListener {
             Log.e("Directions", "Clicked")
@@ -363,7 +371,7 @@ class HomeFragment : Fragment(), OnMapReadyCallback, MapboxMap.OnMarkerClickList
 
     override fun onExplanationNeeded(permissionsToExplain: List<String>) {
         //Toast.makeText(this, R.string.user_location_permission_explanation, Toast.LENGTH_LONG)
-                //.show()
+        //.show()
     }
 
     override fun onPermissionResult(granted: Boolean) {
@@ -371,7 +379,7 @@ class HomeFragment : Fragment(), OnMapReadyCallback, MapboxMap.OnMarkerClickList
             enableLocationComponent(mMapboxMap.style!!)
         } else {
             //Toast.makeText(this, R.string.user_location_permission_not_granted, Toast.LENGTH_LONG)
-                    //.show()
+            //.show()
             activity?.finish()
         }
     }
@@ -432,6 +440,8 @@ class HomeFragment : Fragment(), OnMapReadyCallback, MapboxMap.OnMarkerClickList
                         Log.e("Directions", "Failed")
                     }
                 })
+
     }
 
 }
+

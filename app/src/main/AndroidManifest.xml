@@ -38,8 +38,8 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:host="www.ntrc.vc"
-                    android:scheme="myapp" />
+                    android:scheme="https"
+                    android:host="www.ntrc.vc"/>
             </intent-filter>
 
             <meta-data

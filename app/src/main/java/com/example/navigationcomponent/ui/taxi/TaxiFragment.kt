@@ -5,7 +5,9 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -14,6 +16,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.navigationcomponent.R
 import com.example.navigationcomponent.TourDetails
 import com.example.navigationcomponent.TourRecyclerAdapter
+import com.example.navigationcomponent.com.example.navigationcomponent.TaxiDetails
+import com.example.navigationcomponent.com.example.navigationcomponent.TaxiRecyclerAdapter
+import kotlinx.android.synthetic.main.fragment_taxi.*
 import kotlinx.android.synthetic.main.fragment_tour.*
 import org.json.JSONArray
 import org.json.JSONException
@@ -25,11 +30,11 @@ import java.io.InputStreamReader
 import java.net.HttpURLConnection
 import java.net.URL
 
-class TourFragment : Fragment() {
+class TaxiFragment : Fragment() {
 
 
     private lateinit var shareViewModel: TaxiShareViewModel
-    private var toursList: ArrayList<TourDetails> = ArrayList()
+    private var taxiList: ArrayList<TaxiDetails> = ArrayList()
 
     // This fragment loads the images however it is not responsible for the opening of more shop information. That would be ShopActivity.
 
@@ -41,7 +46,7 @@ class TourFragment : Fragment() {
     ): View? {
         shareViewModel =
                 ViewModelProviders.of(this).get(TaxiShareViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_tour, container, false)
+        val root = inflater.inflate(R.layout.fragment_taxi, container, false)
         shareViewModel.text.observe(viewLifecycleOwner, Observer {
         })
 
@@ -54,7 +59,7 @@ class TourFragment : Fragment() {
         AsyncTask.execute{
             val `is`: InputStream
             val link =
-                    URL("http://ec2-54-237-130-84.compute-1.amazonaws.com/tourism/getTourguides.php")
+                    URL("http://ec2-54-237-130-84.compute-1.amazonaws.com/tourism/getTaxis.php")
             var conn = link.openConnection() as HttpURLConnection
             var resultList = ""
             try {
@@ -77,26 +82,26 @@ class TourFragment : Fragment() {
                         val jArray = JSONArray(resultList)
                         Log.e("Result2", jArray.length().toString())
                         for (i in 0 until jArray.length()) {
-                            val tourInfoAll: JSONObject = jArray.getJSONObject(i)
+                            val taxiInfoAll: JSONObject = jArray.getJSONObject(i)
 
-                            val newTourDetails = TourDetails()
-                            newTourDetails.tourId = tourInfoAll.getInt("tourguide_id")
-                            newTourDetails.tourName = tourInfoAll.getString("tourguide_name")
-                            newTourDetails.tourDesc = tourInfoAll.getString("tourguide_desc")
-                            newTourDetails.tourPhone = tourInfoAll.getString("tourguide_num")
-                            newTourDetails.tourLocation = tourInfoAll.getString("tourguide_location")
-                            newTourDetails.tourHours = tourInfoAll.getString("tourguide_openhrs")
-                            newTourDetails.tourLink= tourInfoAll.getString("tourguide_link")
-                            newTourDetails.tourImage= tourInfoAll.getString("tourimageurl")
-                            toursList.add(newTourDetails)
+                            val newTaxiDetails = TaxiDetails()
+                            newTaxiDetails.taxiId = taxiInfoAll.getInt("taxi_id")
+                            newTaxiDetails.taxiName = taxiInfoAll.getString("taxi_name")
+                            newTaxiDetails.taxiDesc = taxiInfoAll.getString("taxi_desc")
+                            newTaxiDetails.taxiPhone = taxiInfoAll.getString("taxi_number")
+                            newTaxiDetails.taxiLocation = taxiInfoAll.getString("taxi_location")
+                            newTaxiDetails.taxiHours = taxiInfoAll.getString("taxi_openhrs")
+                            newTaxiDetails.taxiLink= taxiInfoAll.getString("taxi_link")
+                            newTaxiDetails.taxiImage= taxiInfoAll.getString("taxiimageurl")
+                            taxiList.add(newTaxiDetails)
 
                         }}
                     catch (e: JSONException) {
                         e.printStackTrace()
                     } finally {
                         conn.disconnect()
-                        tour_recylerview.post(Runnable {
-                            loadRecyclerView(toursList)
+                        taxi_recylerview.post(Runnable {
+                            loadRecyclerView(taxiList)
                         })
 
                         synchronized(this) {}
@@ -116,9 +121,9 @@ class TourFragment : Fragment() {
 
     }
 
-    private fun loadRecyclerView(list: ArrayList<TourDetails>) {
-        tour_recylerview.adapter = activity?.let { TourRecyclerAdapter(list, it) }
-        tour_recylerview.layoutManager = LinearLayoutManager(context)
+    private fun loadRecyclerView(list: ArrayList<TaxiDetails>) {
+        taxi_recylerview.adapter = activity?.let { TaxiRecyclerAdapter(list, it) }
+        taxi_recylerview.layoutManager = LinearLayoutManager(context)
     }
 
 }

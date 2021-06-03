@@ -1,15 +1,13 @@
-package com.example.navigationcomponent
+package com.example.navigationcomponent.com.example.navigationcomponent
 
-import android.content.Intent
-import android.net.Uri
 import android.os.AsyncTask
 import android.os.Bundle
 import android.os.Looper
 import android.util.Log
 import android.view.View
-import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.navigationcomponent.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_tour.*
 import org.json.JSONArray
@@ -21,24 +19,19 @@ import java.net.URL
 import java.net.URLEncoder
 
 
-class TourActivity : AppCompatActivity() {
+class TaxiActivity : AppCompatActivity() {
 
-        var tourID = 0
+        var taxiID = 0
         var resultString = ""
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
-            setContentView(R.layout.activity_tour)
+            setContentView(R.layout.activity_taxi)
 
-            val button = findViewById<View>(R.id.buttonCall) as Button
             val extras = intent.extras
 
-
-
-
             if (extras != null) {
-                tourID = extras.getInt("tourguide_id")
+                taxiID = extras.getInt("taxi_id")
             }
-
 
             AsyncTask.execute{
                 /* This method receives the URL to a PHP code hosted on the web server
@@ -49,14 +42,14 @@ class TourActivity : AppCompatActivity() {
                 val `is`: InputStream
                 val data = java.lang.StringBuilder()
 
-                val link = URL("http://ec2-54-237-130-84.compute-1.amazonaws.com/tourism/getSelectedTour.php")
+                val link = URL("http://ec2-54-237-130-84.compute-1.amazonaws.com/tourism/getTaxis.php")
                 var conn: HttpURLConnection
                 conn = link.openConnection() as HttpURLConnection
 
                 try {
                     data.append(URLEncoder.encode("tourID", "UTF-8"))
                     data.append("=")
-                    data.append(URLEncoder.encode(tourID.toString(), "UTF-8"))
+                    data.append(URLEncoder.encode(taxiID.toString(), "UTF-8"))
 
                     conn.readTimeout = 10000
                     conn.connectTimeout = 15000
@@ -92,42 +85,34 @@ class TourActivity : AppCompatActivity() {
                                 val tourInfoAll: JSONObject = jArray.getJSONObject(i)
 
                                 image.post {
-                                    tour_name.text = tourInfoAll.getString("tourguide_name")
-                                    tour_desc.text = tourInfoAll.getString("tourguide_desc")
-                                    Picasso.get().load(tourInfoAll.getString("tourimageurl")).placeholder(R.drawable.cruise).into(image)
+                                    tour_name.text = tourInfoAll.getString("taxi_name")
+                                    tour_desc.text = tourInfoAll.getString("taxi_desc")
+                                    Picasso.get().load(tourInfoAll.getString("taxiimageurl")).placeholder(R.drawable.cruise).into(image)
 
                                     // Displays Views once info is present
-                                    if ( tourInfoAll.getString("tourguide_location").isEmpty()){
+                                    if ( tourInfoAll.getString("taxi_location").isEmpty()){
                                         tour_location.visibility = View.GONE
                                     } else {
-                                        tour_location.text = tourInfoAll.getString("tourguide_location")
+                                        tour_location.text = tourInfoAll.getString("taxi_location")
                                     }
-                                    if ( tourInfoAll.getString("tourguide_openhrs").isEmpty()){
+                                    if ( tourInfoAll.getString("taxi_openhrs").isEmpty()){
                                         tour_hours.visibility = View.GONE
                                     } else {
-                                        tour_hours.text = tourInfoAll.getString("tourguide_openhrs")
+                                        tour_hours.text = tourInfoAll.getString("taxi_openhrs")
                                     }
-                                    if ( tourInfoAll.getString("tourguide_num").isEmpty()){
+                                    if ( tourInfoAll.getString("taxi_number").isEmpty()){
                                         buttonCall.visibility = View.GONE
                                     } else {
-                                        buttonCall.text = tourInfoAll.getString("tourguide_num")
-                                        buttonCall.setOnClickListener {
-                                            val intent = Intent(Intent.ACTION_CALL)
-                                            intent.data = Uri.parse("tel:"+tourInfoAll.getString("tourguide_num"))
-                                            startActivity(intent)
-                                        }
+                                        buttonCall.text = tourInfoAll.getString("taxi_number")
                                     }
-                                    if ( tourInfoAll.getString("tourguide_link").isEmpty()){
+                                    if ( tourInfoAll.getString("taxi_link").isEmpty()){
                                         buttonWeb.visibility = View.GONE
                                     } else {
-                                        buttonWeb.text = tourInfoAll.getString("tourguide_link")
-                                        buttonWeb.setOnClickListener {
-                                            val intent = Intent(Intent.ACTION_VIEW)
-                                            intent.data = Uri.parse(tourInfoAll.getString("tourguide_link"))
-                                            startActivity(intent)
-                                        }
+                                        buttonWeb.text = tourInfoAll.getString("taxi_link")
                                     }
                                 }
+
+
                             }}
                         catch (e: JSONException) {
                             e.printStackTrace()

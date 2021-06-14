@@ -1,15 +1,23 @@
 package com.example.navigationcomponent.com.example.navigationcomponent
 
+import android.content.Intent
+import android.net.Uri
 import android.os.AsyncTask
 import android.os.Bundle
 import android.os.Looper
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.navigationcomponent.R
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.activity_taxi.*
 import kotlinx.android.synthetic.main.activity_tour.*
+import kotlinx.android.synthetic.main.activity_tour.buttonCall
+import kotlinx.android.synthetic.main.activity_tour.buttonWeb
+import kotlinx.android.synthetic.main.activity_tour.tour_hours
+import kotlinx.android.synthetic.main.activity_tour.tour_location
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -23,12 +31,14 @@ class TaxiActivity : AppCompatActivity() {
 
         var taxiID = 0
         var resultString = ""
+
+
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_taxi)
 
+            val button = findViewById<View>(R.id.buttonCall) as Button
             val extras = intent.extras
-
             if (extras != null) {
                 taxiID = extras.getInt("taxi_id")
             }
@@ -42,12 +52,12 @@ class TaxiActivity : AppCompatActivity() {
                 val `is`: InputStream
                 val data = java.lang.StringBuilder()
 
-                val link = URL("http://ec2-54-237-130-84.compute-1.amazonaws.com/tourism/getTaxis.php")
+                val link = URL("http://ec2-54-237-130-84.compute-1.amazonaws.com/tourism/getSelectedTaxi.php")
                 var conn: HttpURLConnection
                 conn = link.openConnection() as HttpURLConnection
 
                 try {
-                    data.append(URLEncoder.encode("tourID", "UTF-8"))
+                    data.append(URLEncoder.encode("taxiID", "UTF-8"))
                     data.append("=")
                     data.append(URLEncoder.encode(taxiID.toString(), "UTF-8"))
 
@@ -82,37 +92,49 @@ class TaxiActivity : AppCompatActivity() {
                             val jArray = JSONArray(resultString)
                             Log.e("Result2", jArray.length().toString())
                             for (i in 0 until jArray.length()) {
-                                val tourInfoAll: JSONObject = jArray.getJSONObject(i)
+                                val taxiInfoAll: JSONObject = jArray.getJSONObject(i)
 
-                                image.post {
-                                    tour_name.text = tourInfoAll.getString("taxi_name")
-                                    tour_desc.text = tourInfoAll.getString("taxi_desc")
-                                    Picasso.get().load(tourInfoAll.getString("taxiimageurl")).placeholder(R.drawable.cruise).into(image)
+                                image_taxi.post {
+                                    taxi_name.text = taxiInfoAll.getString("taxi_name")
+                                    taxi_desc.text = taxiInfoAll.getString("taxi_desc")
+                                    Picasso.get().load(taxiInfoAll.getString("taxiimageurl"))
+                                        .placeholder(R.drawable.cruise).into(image_taxi)
 
                                     // Displays Views once info is present
-                                    if ( tourInfoAll.getString("taxi_location").isEmpty()){
+                                    if (taxiInfoAll.getString("taxi_location").isEmpty()) {
                                         tour_location.visibility = View.GONE
                                     } else {
-                                        tour_location.text = tourInfoAll.getString("taxi_location")
+                                        tour_location.text = taxiInfoAll.getString("taxi_location")
                                     }
-                                    if ( tourInfoAll.getString("taxi_openhrs").isEmpty()){
+                                    if (taxiInfoAll.getString("taxi_openhrs").isEmpty()) {
                                         tour_hours.visibility = View.GONE
                                     } else {
-                                        tour_hours.text = tourInfoAll.getString("taxi_openhrs")
+                                        tour_hours.text = taxiInfoAll.getString("taxi_openhrs")
                                     }
-                                    if ( tourInfoAll.getString("taxi_number").isEmpty()){
+                                    if (taxiInfoAll.getString("taxi_number").isEmpty()) {
                                         buttonCall.visibility = View.GONE
                                     } else {
-                                        buttonCall.text = tourInfoAll.getString("taxi_number")
+                                        buttonCall.text = taxiInfoAll.getString("taxi_number")
+                                        buttonCall.setOnClickListener {
+                                            val intent = Intent(Intent.ACTION_CALL)
+                                            intent.data =
+                                                Uri.parse("tel:" + taxiInfoAll.getString("tourguide_num"))
+                                            startActivity(intent)
+                                        }
                                     }
-                                    if ( tourInfoAll.getString("taxi_link").isEmpty()){
-                                        buttonWeb.visibility = View.GONE
+                                    if (taxiInfoAll.getString("taxi_link").isEmpty()) {
+                                        webButton.visibility = View.GONE
                                     } else {
-                                        buttonWeb.text = tourInfoAll.getString("taxi_link")
+                                        webButton.text = taxiInfoAll.getString("taxi_link")
+                                        webButton.setOnClickListener {
+                                            val intent = Intent(Intent.ACTION_VIEW)
+                                            intent.data =
+                                                Uri.parse(taxiInfoAll.getString("taxi_link"))
+                                            startActivity(intent)
+                                        }
                                     }
+
                                 }
-
-
                             }}
                         catch (e: JSONException) {
                             e.printStackTrace()

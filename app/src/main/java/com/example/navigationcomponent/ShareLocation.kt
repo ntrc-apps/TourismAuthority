@@ -61,13 +61,13 @@ class ShareLocation : AppCompatActivity(), PermissionsListener, OnMapReadyCallba
         Log.e("Activity", "Started")
 
         // Sets up toolbar
-        val toolbar = findViewById<Toolbar>(R.id.app_bar)
+        /*val toolbar = findViewById<Toolbar>(R.id.app_bar)
         setSupportActionBar(toolbar)
         toolbar.title = "Shared Location"
         toolbar.setTitleTextColor(Color.WHITE)
         assert(supportActionBar != null)
         supportActionBar!!.setHomeButtonEnabled(true)
-        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)*/
 
         //Intent intent = getIntent();
         val uri = intent.data!!

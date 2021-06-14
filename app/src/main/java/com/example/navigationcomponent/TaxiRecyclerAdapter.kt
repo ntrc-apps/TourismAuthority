@@ -5,28 +5,36 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.example.navigationcomponent.R
 import com.example.navigationcomponent.TourActivity
 import com.example.navigationcomponent.TourDetails
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.taxi_cardview.view.*
 import kotlinx.android.synthetic.main.tourguide_cardview.view.*
+import kotlinx.android.synthetic.main.tourguide_cardview.view.layout
 
 
-class TaxiRecyclerAdapter  (private var taxiList: ArrayList <TaxiDetails>, private val context: Activity): RecyclerView.Adapter<TaxiRecyclerAdapter.MyViewHolder>(){
+class TaxiRecyclerAdapter  (private var taxiList: ArrayList <TaxiDetails>, private val context: Activity): RecyclerView.Adapter<TaxiRecyclerAdapter.MyViewHolder>(), Filterable {
+
+    var taxiFilterList = ArrayList<TaxiDetails>()
+
+    init {
+        taxiFilterList = taxiList
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.taxi_cardview,
                 parent, false)
         return MyViewHolder(itemView)
     }
 
-    override fun getItemCount() = taxiList.size
+    override fun getItemCount(): Int{
+        return taxiFilterList.size
+    }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val currentItem = taxiList[position]
+        val currentItem = taxiFilterList[position]
 
 
         holder.taxiName.text = currentItem.taxiName
@@ -42,8 +50,35 @@ class TaxiRecyclerAdapter  (private var taxiList: ArrayList <TaxiDetails>, priva
     }
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        val taxiImage: ImageView = itemView.image
-        val taxiName: TextView = itemView.tour_name
+        val taxiImage: ImageView = itemView.taxis_image
+        val taxiName: TextView = itemView.taxis_name
         val layout: LinearLayout = itemView.layout
+    }
+    override fun getFilter(): Filter {
+        return object : Filter() {
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+                val charSearch = constraint.toString()
+                if (charSearch.isEmpty()) {
+                    taxiFilterList = taxiList
+                } else {
+                    val resultList = ArrayList<TaxiDetails>()
+                    for (row in taxiList) {
+                        if (row.taxiName.toLowerCase().contains(constraint.toString().toLowerCase())) {
+                            resultList.add(row)
+                        }
+                    }
+                    taxiFilterList = resultList
+                }
+                val filterResults = FilterResults()
+                filterResults.values = taxiFilterList
+                return filterResults
+            }
+
+            @Suppress("UNCHECKED_CAST")
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                taxiFilterList = results?.values as ArrayList<TaxiDetails>
+                notifyDataSetChanged()
+            }
+        }
     }
 }

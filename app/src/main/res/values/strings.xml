@@ -25,5 +25,7 @@
     <string name="siteimage">siteImage</string>
     <string name="discover_svg">Discover SVG</string>
     <string name="tour_guides">Tour Guides</string>
+    <string name="app_label" />
+    <string name="search_hint" />
 
 </resources>

@@ -19,14 +19,14 @@
 
 
         <ImageView
-            android:id="@+id/image"
+            android:id="@+id/taxis_image"
             android:layout_width="383dp"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
             app:srcCompat="@drawable/fantasea_tours" />
 
         <TextView
-            android:id="@+id/tour_name"
+            android:id="@+id/taxis_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"

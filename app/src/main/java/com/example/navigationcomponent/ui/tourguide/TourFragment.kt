@@ -1,19 +1,26 @@
 package com.example.navigationcomponent.ui.tourguide
 
+import android.app.Activity
+import android.content.Intent
 import android.os.AsyncTask
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.*
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.navigationcomponent.R
+import com.example.navigationcomponent.SearchableActivity
 import com.example.navigationcomponent.TourDetails
 import com.example.navigationcomponent.TourRecyclerAdapter
+
+import com.mapbox.mapboxsdk.maps.MapView
 import kotlinx.android.synthetic.main.fragment_tour.*
 import org.json.JSONArray
 import org.json.JSONException
@@ -25,11 +32,14 @@ import java.io.InputStreamReader
 import java.net.HttpURLConnection
 import java.net.URL
 
-class TourFragment : Fragment() {
+class TourFragment : Fragment(), SearchView.OnQueryTextListener {
 
 
-    private lateinit var shareViewModel: TaxiShareViewModel
+    private lateinit var shareViewModel: ShareViewModel
     private var toursList: ArrayList<TourDetails> = ArrayList()
+    private lateinit var search: SearchView
+    private lateinit var adapter: TourRecyclerAdapter
+    lateinit var recycler: RecyclerView
 
     // This fragment loads the images however it is not responsible for the opening of more shop information. That would be ShopActivity.
 
@@ -40,10 +50,15 @@ class TourFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         shareViewModel =
-                ViewModelProviders.of(this).get(TaxiShareViewModel::class.java)
+                ViewModelProviders.of(this).get(ShareViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_tour, container, false)
         shareViewModel.text.observe(viewLifecycleOwner, Observer {
         })
+
+        search = root.findViewById(R.id.tourguide_search)
+        search.setOnQueryTextListener(this)
+
+        recycler = root.findViewById(R.id.tour_recylerview)
 
         return root
     }
@@ -117,8 +132,27 @@ class TourFragment : Fragment() {
     }
 
     private fun loadRecyclerView(list: ArrayList<TourDetails>) {
-        tour_recylerview.adapter = activity?.let { TourRecyclerAdapter(list, it) }
-        tour_recylerview.layoutManager = LinearLayoutManager(context)
+        adapter = TourRecyclerAdapter(list, context as Activity)
+        recycler.adapter = adapter
+        recycler.layoutManager = LinearLayoutManager(context)
+        //tour_recylerview.adapter = activity?.let { TourRecyclerAdapter(list, it) }!!
+        //tour_recylerview.layoutManager = LinearLayoutManager(context)
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        Log.e("Search", "Send")
+        var intent = Intent(context, SearchableActivity::class.java).apply {
+            putExtra("Query", query)
+        }
+        startActivity(intent)
+
+        return false
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        Log.e("LEtter", newText.toString())
+        adapter.filter.filter(newText)
+        return false
     }
 
 }

@@ -12,7 +12,7 @@
     <LinearLayout
         android:id="@+id/background"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="117dp"
         android:background="@drawable/gradient"
         android:orientation="horizontal">
 
@@ -27,7 +27,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="30dp"
             android:fontFamily="@font/montserrat"
             android:text="@string/discover_svg"
             android:textColor="#FFFFFF"

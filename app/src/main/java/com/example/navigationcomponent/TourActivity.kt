@@ -25,16 +25,13 @@ class TourActivity : AppCompatActivity() {
 
         var tourID = 0
         var resultString = ""
-        override fun onCreate(savedInstanceState: Bundle?) {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_tour)
 
-            val button = findViewById<View>(R.id.buttonCall) as Button
-            val extras = intent.extras
-
-
-
-
+        val button = findViewById<View>(R.id.buttonCall) as Button
+        val extras = intent.extras
             if (extras != null) {
                 tourID = extras.getInt("tourguide_id")
             }

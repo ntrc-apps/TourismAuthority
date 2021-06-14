@@ -21,7 +21,7 @@
         <ImageView
             android:id="@+id/image"
             android:layout_width="383dp"
-            android:layout_height="218dp"
+            android:layout_height="185dp"
             android:scaleType="fitXY"
             app:srcCompat="@drawable/fantasea_tours" />
 

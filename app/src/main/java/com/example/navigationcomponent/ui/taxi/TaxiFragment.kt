@@ -1,5 +1,7 @@
 package com.example.navigationcomponent.ui.tourguide
 
+import android.app.Activity
+import android.content.Intent
 import android.os.AsyncTask
 import android.os.Bundle
 import android.os.Handler
@@ -8,14 +10,18 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.navigationcomponent.R
+import com.example.navigationcomponent.SearchableActivity
 import com.example.navigationcomponent.TourDetails
 import com.example.navigationcomponent.TourRecyclerAdapter
+import com.example.navigationcomponent.com.example.navigationcomponent.SearchableActivityTaxi
 import com.example.navigationcomponent.com.example.navigationcomponent.TaxiDetails
 import com.example.navigationcomponent.com.example.navigationcomponent.TaxiRecyclerAdapter
 import kotlinx.android.synthetic.main.fragment_taxi.*
@@ -30,11 +36,15 @@ import java.io.InputStreamReader
 import java.net.HttpURLConnection
 import java.net.URL
 
-class TaxiFragment : Fragment() {
+class TaxiFragment : Fragment(), SearchView.OnQueryTextListener {
 
 
     private lateinit var shareViewModel: TaxiShareViewModel
     private var taxiList: ArrayList<TaxiDetails> = ArrayList()
+    private lateinit var search: SearchView
+    private lateinit var adapter: TaxiRecyclerAdapter
+    lateinit var recycler: RecyclerView
+
 
     // This fragment loads the images however it is not responsible for the opening of more shop information. That would be ShopActivity.
 
@@ -49,6 +59,11 @@ class TaxiFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_taxi, container, false)
         shareViewModel.text.observe(viewLifecycleOwner, Observer {
         })
+
+        search = root.findViewById(R.id.taxi_search)
+        search.setOnQueryTextListener(this)
+
+        recycler = root.findViewById(R.id.taxi_recylerview)
 
         return root
     }
@@ -122,8 +137,27 @@ class TaxiFragment : Fragment() {
     }
 
     private fun loadRecyclerView(list: ArrayList<TaxiDetails>) {
-        taxi_recylerview.adapter = activity?.let { TaxiRecyclerAdapter(list, it) }
-        taxi_recylerview.layoutManager = LinearLayoutManager(context)
+        adapter = TaxiRecyclerAdapter(list, context as Activity)
+        recycler.adapter = adapter
+        recycler.layoutManager = LinearLayoutManager(context)
+        //tour_recylerview.adapter = activity?.let { TourRecyclerAdapter(list, it) }!!
+        //tour_recylerview.layoutManager = LinearLayoutManager(context)
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        Log.e("Search", "Send")
+        var intent = Intent(context, SearchableActivityTaxi::class.java).apply {
+            putExtra("Query", query)
+        }
+        startActivity(intent)
+
+        return false
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        Log.e("Letter", newText.toString())
+        adapter.filter.filter(newText)
+        return false
     }
 
 }

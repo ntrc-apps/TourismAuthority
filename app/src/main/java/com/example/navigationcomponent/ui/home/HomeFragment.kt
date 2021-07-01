@@ -130,7 +130,7 @@ class HomeFragment : Fragment(), OnMapReadyCallback, MapboxMap.OnMarkerClickList
              description.toString()
             destinationPoint
 
-            val info = "https://www.ntrc.vc/tourism-app/?longitue=" + destinationPoint.longitude()+ "&latitude=" + destinationPoint.latitude()
+            val info = "https://www.ntrc.vc/tourism-app/?longitude=" + destinationPoint.longitude()+ "&latitude=" + destinationPoint.latitude()
             val shareIntent = Intent()
             shareIntent.action = Intent.ACTION_SEND
             shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Location Shared")

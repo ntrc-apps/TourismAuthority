@@ -25,7 +25,8 @@
 
                 <data
                     android:host="www.ntrc.vc"
-                    android:scheme="https" />
+                    android:scheme="https"
+                    android:pathPrefix="/tourism-app" />
             </intent-filter>
         </activity>
         <activity android:name=".SearchableActivity">

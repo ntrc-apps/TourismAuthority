@@ -47,8 +47,8 @@ public class DisplaySharedInfo : AppCompatActivity() {
         val test = appLinkData.toString()
         Log.e("trying", test)
 
-        val params: String = pathSegments(test) as String
-        Log.e("params",params)
+        //val params: String = pathSegments(test) as String
+        //Log.e("params",params)
 
         /*var params : List<String>
 
@@ -65,7 +65,7 @@ public class DisplaySharedInfo : AppCompatActivity() {
 
     }
 
-    private fun pathSegments(test: String): Any {
+    /*private fun pathSegments(test: String): Any {
         var dataArray: ArrayList<String>
         if (test!= null) {
 
@@ -75,7 +75,7 @@ public class DisplaySharedInfo : AppCompatActivity() {
             Log.e("split2", keyValueStrings.toString())
         }
         return dataArray
-    }
+    }*/
 
 }
 

@@ -13,7 +13,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.activity_tour.*
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject

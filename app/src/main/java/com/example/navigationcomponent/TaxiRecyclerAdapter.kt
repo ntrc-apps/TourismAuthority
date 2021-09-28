@@ -50,9 +50,9 @@ class TaxiRecyclerAdapter  (private var taxiList: ArrayList <TaxiDetails>, priva
     }
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        val taxiImage: ImageView = itemView.taxis_image
-        val taxiName: TextView = itemView.taxis_name
-        val layout: LinearLayout = itemView.layout
+        val taxiImage: ImageView = itemView.findViewById(R.id.taxis_image)
+        val taxiName: TextView = itemView.findViewById(R.id.taxis_name)
+        val layout: LinearLayout = itemView.findViewById(R.id.layout)
     }
     override fun getFilter(): Filter {
         return object : Filter() {

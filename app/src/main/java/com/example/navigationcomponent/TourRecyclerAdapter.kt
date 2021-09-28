@@ -51,9 +51,9 @@ class TourRecyclerAdapter(private var toursList: ArrayList<TourDetails>, private
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        val tourImage: ImageView = itemView.image
-        val tourName: TextView = itemView.tour_name
-        val layout: LinearLayout = itemView.layout
+        val tourImage: ImageView = itemView.findViewById(R.id.image)
+        val tourName: TextView = itemView.findViewById(R.id.tour_name)
+        val layout: LinearLayout = itemView.findViewById(R.id.layout)
     }
 
     override fun getFilter(): Filter {

@@ -11,9 +11,7 @@ import com.example.navigationcomponent.R
 import com.example.navigationcomponent.TourActivity
 import com.example.navigationcomponent.TourDetails
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.taxi_cardview.view.*
-import kotlinx.android.synthetic.main.tourguide_cardview.view.*
-import kotlinx.android.synthetic.main.tourguide_cardview.view.layout
+
 
 
 class TaxiRecyclerAdapter  (private var taxiList: ArrayList <TaxiDetails>, private val context: Activity): RecyclerView.Adapter<TaxiRecyclerAdapter.MyViewHolder>(), Filterable {

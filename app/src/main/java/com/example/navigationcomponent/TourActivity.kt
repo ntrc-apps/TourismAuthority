@@ -8,6 +8,8 @@ import android.os.Looper
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.squareup.picasso.Picasso
@@ -25,6 +27,16 @@ class TourActivity : AppCompatActivity() {
 
         var tourID = 0
         var resultString = ""
+
+    lateinit var image:ImageView
+    lateinit var tour_name:TextView
+    lateinit var tour_desc:TextView
+    lateinit var tour_location:TextView
+    lateinit var tour_hours:TextView
+    lateinit var buttonCall:Button
+    lateinit var buttonWeb:Button
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)

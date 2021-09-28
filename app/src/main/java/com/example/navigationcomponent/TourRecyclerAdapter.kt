@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.tourguide_cardview.view.*
+//import kotlinx.android.synthetic.main.tourguide_cardview.view.*
 
 
 class TourRecyclerAdapter(private var toursList: ArrayList<TourDetails>, private val context: Activity) : RecyclerView.Adapter<TourRecyclerAdapter.MyViewHolder>(), Filterable {
